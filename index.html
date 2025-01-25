@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLMYZ-x5OD98nr03Jbd0LkeJkTosd7yWk&callback=initMap"></script>
+
+</head>
+<body>
+    <header>
+        <nav class="logo"><h5>Crisis<span>Nav</span></h5></nav>
+
+        <nav class="navbar">
+            <a href="#home" style="--i:1" class="active">Home</a>
+            <a href="#map" style="--i:2">Map</a>
+            <a href="#safety" style="--i:4">Navigation</a>
+            <a href="#services" style="--i:3">Help</a>
+            <a href="#contact" style="--i:5">Information</a>
+            <a href="#donation" style="--i:6">Donate</a> 
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="home">
+            <h1>Affected <span>Area!!</span></h1>
+            <ul id="alerts"></ul>
+        </section>
+        <section id="map" class="page">
+            <h2>Disaster <span>Map</span></h2>
+            <div id="map-container" style="height: 80vh; width: 100%;"></div>
+        </section>
+
+        <section id="safety" class="page">
+            <h2>Safety <span>Navigation</span></h2>
+            <button onclick="getDirections()" aria-label="Get Directions to Safe Place">Get Directions to Safe Place</button>
+        </section>        
+
+        <section>
+            <div class="help" id="services">
+                    <div class="main-text" id="project">
+                        <h2>Need <span>Help??</span></h2>
+    
+                        <div class="help-content">
+                            <div class="row">
+                                <img src="Food.jpg">
+                                <div class="layer">
+                                    <h5>Food</h5>
+                                    <p>Provides real-time information on nearby food distribution centers and connects users with relief organizations for essential meals.
+                                        Tracks food supply availability and enables volunteers to assist with distribution
+                                    </p>
+                                    <a href="https://www.cottonlogistics.com/catering/emergency-food-services/"><i class='bx bx-link-external' style="color: rgb(0, 0, 0);"></i></a>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <img src="camp.jpg">
+                                <div class="layer">
+                                    <h5>Nearest Camp</h5>
+                                    <p>Offers up-to-date locations of safe shelters with details on capacity and proximity, ensuring quick access during emergencies.
+                                        Coordinates efforts between agencies to establish temporary shelters for displaced individuals.
+                                    </p>
+                                    <a href="https://www.justdial.com/Pune/Disaster-Management-Services-in-Camp/nct-10891503"><i class='bx bx-link-external' style="color: rgb(0, 0, 0);"></i></a>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <img src="aid.jpg">
+                                <div class="layer">
+                                    <h5>First Aid</h5>
+                                    <p>Locates nearby first-aid stations and provides an emergency medical guide for immediate care.
+                                        Connects users with volunteers and certified medical personnel for timely assistance in critical situations.
+                                    </p>
+                                    <a href="https://ndma.gov.in/Resources/awareness/First_Aid"><i class='bx bx-link-external' style="color: rgb(0, 0, 0);"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="contact-text">
+                <h2>In Trouble?? <span>Send Information</span></h2>
+                <h3>Do Not Panic We Will Reach You Soon</h3>
+            </div>
+            <div class="contact-form">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="65652d45-1286-4de3-a940-efb526e62d5d">
+                    <input type="text" name="total_people" placeholder="Total number of people stuck" required>
+                    <input type="text" id="location" name="location" placeholder="Location" required readonly>
+                    <button type="button" id="detect-location" class="detect-location-button">Detect My Current Location</button>
+                    <button type="submit" class="send">Submit</button>
+                </form>
+                </div> 
+                <h4>Remember: You are not alone.<p>
+                    Our real-time alerts and clear guidance are here to keep you safe.</p></h4>         
+        </section>
+
+        <section id="donation" class="page">
+            <h2>Make <span>Donation</span></h2>
+            <div class="donation-form">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="65652d45-1286-4de3-a940-efb526e62d5d">
+                    
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+        
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+        
+                    <label for="amount">Donation Amount</label>
+                    <input type="number" id="amount" name="amount" placeholder="Enter Amount" required>
+        
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="upi">UPI</option>
+                        <option value="Credit">Credit Card</option>
+                        <option value="Debit">Debit Card</option>
+                        <option Value="net">Net Banking</option>
+                    </select>
+        
+                    <label for="transaction-id">Transaction ID</label>
+                    <input type="text" id="transaction-id" name="transaction-id" placeholder="Enter Transaction ID" required>
+        
+                    <div class="qr-code">
+                        <img src="payment.png" alt="QR Code for Payment">
+                    </div>
+        
+                    <button type="submit" class="donate-button">Donate Now</button>
+                </form>
+            </div>
+        </section>
+                <div class="last-text">
+            <p>Thank You For Visting!<br>Developed By Surya Pratap © 2024 All rights reserved.</p>
+        </div>
+        <a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
+    
+
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
